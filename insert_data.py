@@ -9,28 +9,34 @@ products_collection = db.products
 products = [
     {
         "name": "Vintage Camera",
-        "tag": "Limited Edition",
+        "tag": "Exclusive Limited Edition Vintage Camera",
         "price": 99.99,
         "image": "/static/images/camera.jpg"
     },
     {
-        "name": "Coffee Beans",
-        "tag": "Special Offer",
-        "price": 30.99,
-        "image": "/static/images/beans.jpg"
+        "name": "Laptop",
+        "tag": "Unbeatable Special Offer on Laptops",
+        "price": 130.99,
+        "image": "/static/images/msi.jpg"
     },
     {
-        "name": "Lipstick",
-        "tag": "Women's Favorite",
-        "price": 59.99,
-        "image": "/static/images/lipstick.jpg"
+        "name": "Watch",
+        "tag": "Stylish Men's Favorite Smart Watch",
+        "price": 259.99,
+        "image": "/static/images/watch.jpg"
+    },
+    {
+        "name": "Ipad Pro",
+        "tag": "Top Choice for Everyone",
+        "price": 1559.99,
+        "image": "/static/images/tablet.jpg"
     }
 ]
 
 prime_day_deals = {
         "name": "Electric Scooter",
-        "tag": "Mega Sale",
-        "price": 9.99,
+        "tag": "Massive Discounts on Electric Scooters",
+        "price": 190.99,
         "image": "/static/images/scooter.jpg"
     }
 
@@ -38,4 +44,4 @@ prime_day_deals = {
 products_collection.insert_many(products)  
 
 #To add a single dictionary into the database
-# products_collection.insert_one(prime_day_deals)
+products_collection.insert_one(prime_day_deals)

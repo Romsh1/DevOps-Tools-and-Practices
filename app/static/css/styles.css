@@ -1,4 +1,4 @@
-/*For text logo*/
+/*Style For text logo*/
 .navbar-brand {
     font-size: 24px; 
     font-weight: bold; 
@@ -14,6 +14,51 @@
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); 
 }
 
+/*Style for Content in home page*/
 .navbar-brand {
     font-family: 'Roboto', sans-serif;
+}
+
+.custom-home {
+    background-color: #f9f9f9; 
+    padding: 40px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.custom-home h1 {
+    font-size: 2.5rem; 
+    color: #4CAF50; 
+}
+
+.custom-home .custom-lead {
+    font-size: 1.2rem; 
+    margin-bottom: 20px; 
+    color: #555; 
+}
+
+/* Table header styling */
+.table th {
+    background-color: #f8f9fa; 
+    color: #343a40; 
+    font-weight: bold; 
+    border-bottom: 2px solid #6c757d; 
+}
+
+/* Table data styling */
+.table td {
+    vertical-align: middle; 
+    font-size: 1.1rem; 
+}
+
+/* Add a subtle shadow effect to the table */
+.table {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; 
+}
+
+/* styles for products heading */
+h1 {
+    color: #343a40; 
+    font-size: 1.5rem; 
 }

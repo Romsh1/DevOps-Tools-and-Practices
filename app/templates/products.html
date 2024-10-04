@@ -1,24 +1,29 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h1>Our Products</h1>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Tag</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td><img src="{{ product['image'] }}" class="card-img-top" alt="{{ product['name'] }}" style="width: 250px; height: 200px;"></td>
-            <td>{{ product['name'] }}</td>
-            <td>{{ product['tag'] }}</td>
-            <td>${{ product['price'] }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Our Products</h1>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th style="font-size: 1.5rem; font-weight: 600; text-align: center;">Image</th>
+                <th style="font-size: 1.5rem; font-weight: 600; text-align: center;">Name</th>
+                <th style="font-size: 1.5rem; font-weight: 600; text-align: center;">Tag</th>
+                <th style="font-size: 1.5rem; font-weight: 600; text-align: center;">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td class="text-center">
+                    <img src="{{ product['image'] }}" class="img-fluid rounded" alt="{{ product['name'] }}" style="width: 150px; height: auto;">
+                </td>
+                <td class="text-center">{{ product['name'] }}</td>
+                <td class="text-center">{{ product['tag'] }}</td>
+                <td class="text-center">${{ product['price'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
