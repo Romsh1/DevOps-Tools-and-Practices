@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center">
+    <div class="text-center">
+        <h1>Welcome to GenZ Gadgets!</h1>
+        <p>At <strong>GenZ Gadgets</strong>, we are passionate about delivering the latest innovations and cutting-edge technology to tech enthusiasts everywhere. Our diverse collection features everything from smart devices and accessories to the coolest tech trends, designed to enhance your lifestyle and keep you at the forefront of the digital age.</p>
+        <p>We pride ourselves on offering high-quality products at competitive prices, ensuring you find the perfect gadget for your needs. Whether you're a tech-savvy individual or just looking for a practical solution, GenZ Gadgets is your ultimate destination for all things tech!</p>
+        <p>Explore our store today and discover the future of gadgets!</p>
+    </div>
+
+    <div class="mt-5">
+        <h2>Featured Categories</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/category1.jpg') }}" class="card-img-top" alt="Smart Devices">
+                    <div class="card-body">
+                        <h5 class="card-title">Smart Devices</h5>
+                        <p class="card-text">Explore the latest in smart technology.</p>
+                        <a href="/products" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/category2.jpg') }}" class="card-img-top" alt="Accessories">
+                    <div class="card-body">
+                        <h5 class="card-title">Accessories</h5>
+                        <p class="card-text">Find the perfect accessories for your gadgets.</p>
+                        <a href="/products" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/category3.jpg') }}" class="card-img-top" alt="Gadget Trends">
+                    <div class="card-body">
+                        <h5 class="card-title">Gadget Trends</h5>
+                        <p class="card-text">Stay updated with the latest tech trends.</p>
+                        <a href="/products" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div>{% endblock %}
