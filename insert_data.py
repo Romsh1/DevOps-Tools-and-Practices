@@ -2,38 +2,38 @@
 from pymongo import MongoClient
 
 # MongoDB Atlas Connection
-client = MongoClient("mongodb+srv://root:iCJPtO3HoTEUyZ3e@cluster0.bb9ww.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-db = client.app  # Replace "app" with your database name
+client = MongoClient("mongodb+srv://root:R6cc5hdGcljx8FIJ@cluster0.znx2q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+db = client.shop_db  # Replace "app" with your database name
 products_collection = db.products  # Replace products with your collection name
 
 # Example product objects
 products = [
     {
         "name": "Product 1",
-        "image": "/static/images/product1.jpg",
+        "tag": "New",
         "price": 29.99,
-        "tag": "New"
+        "image": "/static/images/product1.jpg"
     },
     {
         "name": "Product 2",
-        "image": "/static/images/product2.jpg",
+        "tag": "Discounted",
         "price": 49.99,
-        "tag": "Discounted"
+        "image": "/static/images/product2.jpg"
     },
     {
         "name": "Product 3",
-        "image": "/static/images/product3.jpg",
+        "tag": "Best Seller",
         "price": 19.99,
-        "tag": "Best Seller"
+        "image": "/static/images/product3.jpg"
     }
 ]
 
 black_friday_deals = {
         "name": "Product 4",
-        "image": "/static/images/product4.jpg",
+        "tag": "Black Friday Deals",
         "price": 9.99,
-        "tag": "Black Friday Deals"
+        "image": "/static/images/product4.jpg"
     }
 
 products_collection.insert_many(products)  # allows you to add a list of dictionaries into the database
-# products_collection.insert_one(black_friday_deals)  # allows you to add a single dictionary into the database
+#products_collection.insert_one(black_friday_deals)  # allows you to add a single dictionary into the database

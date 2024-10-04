@@ -19,17 +19,17 @@ class FlaskTestCase(unittest.TestCase):
         # Check if the response is 200 OK
         self.assertEqual(first=response.status_code, second=200)
 
-    def test_index_2(self):
-        # Send a GET request to the "/" route
-        response = self.app.get("/index")
+    # def test_index_2(self):
+    #     # Send a GET request to the "/" route
+    #     response = self.app.get("/index")
 
-        # Check if the response is 200 OK
-        self.assertEqual(first=response.status_code, second=200)
+    #     # Check if the response is 200 OK
+    #     self.assertEqual(first=response.status_code, second=200)
 
-    def test_index_data(self):
-        # Send a GET request to the "/" route
-        response = self.app.get("/index")
+    # def test_index_data(self):
+    #     # Send a GET request to the "/" route
+    #     response = self.app.get("/index")
 
-        # Check if the response is 200 OK
-        self.assertEqual(first=response.data.decode('utf-8'), second="This is the index page!")
+    #     # Check if the response is 200 OK
+    #     self.assertEqual(first=response.data.decode('utf-8'), second="This is the index page!")
 

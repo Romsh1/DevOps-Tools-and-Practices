@@ -8,8 +8,8 @@ from pymongo import MongoClient
 flask_app = Flask(__name__)
 
 # MongoDB Atlas Connection
-client = MongoClient("mongodb+srv://root:iCJPtO3HoTEUyZ3e@cluster0.bb9ww.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-db = client.app  # Replace "app" with your database name
+client = MongoClient("mongodb+srv://root:R6cc5hdGcljx8FIJ@cluster0.znx2q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+db = client.shop_db  # Replace "app" with your database name
 products_collection = db.products  # Replace products with your collection name
 
 from app import routes
