@@ -17,13 +17,13 @@ products = [
         "name": "Coffee Beans",
         "tag": "Special Offer",
         "price": 30.99,
-        "image": "/static/images/product2.jpg"
+        "image": "/static/images/beans.jpg"
     },
     {
         "name": "Lipstick",
         "tag": "Women's Favorite",
         "price": 59.99,
-        "image": "/static/images/product3.jpg"
+        "image": "/static/images/lipstick.jpg"
     }
 ]
 
