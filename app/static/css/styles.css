@@ -1,0 +1,19 @@
+/*For text logo*/
+.navbar-brand {
+    font-size: 24px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-transform: uppercase;
+    letter-spacing: 1px; 
+    transition: color 0.3s ease; 
+}
+
+/*Adding hover effect*/
+.navbar-brand:hover {
+    color: #FFD700; 
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.navbar-brand {
+    font-family: 'Roboto', sans-serif;
+}

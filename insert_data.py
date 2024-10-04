@@ -9,7 +9,7 @@ products_collection = db.products
 products = [
     {
         "name": "Vintage Camera",
-        "tag": "Limiited Edition",
+        "tag": "Limited Edition",
         "price": 99.99,
         "image": "/static/images/camera.jpg"
     },
