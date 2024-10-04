@@ -7,7 +7,7 @@ def index():
 
 @flask_app.route("/products")
 def products():
-    # Fetch all products from MongoDB
+    #Fetching all products from MongoDB Atlas
     products = list(products_collection.find())
     print(products)
     return render_template("products.html", products=products)
