@@ -11,7 +11,7 @@ products = [
         "name": "Vintage Camera",
         "tag": "Limiited Edition",
         "price": 99.99,
-        "image": "/static/images/product1.jpg"
+        "image": "/static/images/camera.jpg"
     },
     {
         "name": "Coffee Beans",
