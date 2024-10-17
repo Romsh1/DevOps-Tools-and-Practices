@@ -1,5 +1,5 @@
 # CSD-4503-01 
-Working on Assignment 2 
+Working on Assignment 2 (Continued...)
 
 Overview:
 -> GenZ Gadgets is a simple e-commerce web application built with Flask. It connects to a MongoDB Atlas database to dynamically display product information, including the product's name, tag, price, and image. The application has two routes:
