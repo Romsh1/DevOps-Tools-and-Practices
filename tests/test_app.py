@@ -1,6 +1,7 @@
 import unittest
 from app import flask_app
 
+#Test1
 class TestRoutes(unittest.TestCase):
     def setUp(self):
         #Setting up test client
@@ -8,7 +9,7 @@ class TestRoutes(unittest.TestCase):
 
     def test_home_route(self):        
         # Testing the '/' route which is expected to only handle GET requests.
-        
+
         # -> Expected Output: The server should return a 405 Method Not Allowed status code
           
         # -> Actual Result: If the actual result is 405, the test will pass, indicating 
