@@ -27,6 +27,7 @@ class TestMongoDB(unittest.TestCase):
         result = self.client.admin.command('ping')
         self.assertEqual(result['ok'], 1.0)
 
+
     #Test 3 - Database write operation
     """
         Test to insert a document into the 'products' collection in MongoDB and verify that
