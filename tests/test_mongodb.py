@@ -18,12 +18,20 @@ class TestMongoDB(unittest.TestCase):
         self.collection = self.db['test_collection']  
 
     #Test 2 - Database read operation
+    """
+        Test to verify the MongoDB connection by sending a ping command
+        to the database and check response
+    """
     def test_mongodb_connection(self):
         #Testing MongoDB connection using ping.
         result = self.client.admin.command('ping')
         self.assertEqual(result['ok'], 1.0)
 
     #Test 3 - Database write operation
+    """
+        Test to insert a document into the 'products' collection in MongoDB and verify that
+        the insertion was successful
+    """
     def test_write_data_to_db(self):
         #Defining new data to insert
         new_data = {
