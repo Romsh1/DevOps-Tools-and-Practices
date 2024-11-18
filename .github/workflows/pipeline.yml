@@ -1,50 +1,122 @@
 # Trigger of the pipeline
 on:
-  # initiate the pipeline when there is a push event in the main branch
+  # Initiate the pipeline when there is a push event in the main branch
   push:
     branches:
       - main
 
+# Global variables
+env:
+  DOCKERHUB_NAMESPACE: romika1  # replace this value with your own namespace
+  DOCKERHUB_REPOSITORY: flask  # replace this value with your own repository
+  IMAGE_VERSION: v1.0.0
+
 jobs:
-  # Stage 1: Building the docker image
+  # Stage 1: Building the Docker image
   build-docker-image:
-    name: The job to build the application docker image
-    # To define the machine that runs a job we use "runs-on"
-    runs-on: csd-windows-local  # Using the self-hosted runner
-    # The instructions are defined as steps
+    name: Build the application Docker image
+    environment: development # this allows GitHub to access secrets in the development environment
+    runs-on: aws-debian-runner-1  # Using the self-hosted runner
     steps:
-      - name: Clone and Checkout to the repository
-        uses: actions/checkout@v2  # this is a GitHub action (pre-defined job)
-                                   # that clones the project into the working directory
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Clones the project into the working directory
+
+      # This GitHub action handles the authentication with an artifact registry
+      - name: Log in to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t flask-app-1:v1.0.0 -f Dockerfile .
-
-  test:
-    name: Unit testing of the application
-    needs: [build-docker-image]
-    runs-on: csd-windows-local
-    steps:
-      - name: Clone and Checkout to the repository
-        uses: actions/checkout@v2  # this is a GitHub action (pre-defined job)
-        # that clones the project into the working directory
-
-      - name: Set up a virtual environment
         run: |
-          python -m venv venv  # Create a virtual environment in a directory called venv
-          venv/Scripts/activate  # Activate the virtual environment
-          pip install flask
-          pip install pytest
+          docker build -t $DOCKERHUB_NAMESPACE/$DOCKERHUB_REPOSITORY:$IMAGE_VERSION -f Dockerfile .
+          docker push $DOCKERHUB_NAMESPACE/$DOCKERHUB_REPOSITORY:$IMAGE_VERSION
 
-      - name: Run unit tests inside the virtual environment
-        run: |
-          venv/Scripts/activate  # Activate the virtual environment
-          pytest tests/  # Runs the unit testing files under the directory tests
+#  # Stage 2: Unit testing the application
+#  test:
+#    name: Unit testing of the application
+#    needs: [build-docker-image]
+#    runs-on: aws-debian-runner-1
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Set up and run tests in a virtual environment
+#        shell: bash
+#        run: |
+#          # Create a virtual environment in a directory called venv
+#          python3 -m venv venv
+#
+#          # Activate the virtual environment
+#          source venv/bin/activate
+#
+#          # Upgrade pip and install dependencies
+#          pip install --upgrade pip
+#          pip install flask pytest pymongo
+#
+#          # Run unit tests
+#          pytest tests/
 
-  deploy-docker-image:
-    name: Deploy the flask image
-    needs: [build-docker-image, test]
-    runs-on: csd-windows-local  # Using the self-hosted runner
-    steps:
-      - name: Deploy the image
-        run: docker run -d -p 5000:5000 flask-app-1:v1.0.0  # -d tag allows us to run the container in the background
+  # Stage 3: Deploy the Docker image
+#  deploy-docker-image:
+#    name: Deploy the Flask image
+#    needs: [build-docker-image]
+#    runs-on: aws-debian-runner-1  # Using the self-hosted runner
+#    environment: development  # This tells GitHub where to get the secrets
+#    steps:
+#      - name: Deploy the image
+#        # docker rm -f flask-app-1 || true
+#        run: |
+#          docker run -d -p 5000:5000 -e MONGODB_USERNAME=${{ secrets.MONGODB_USERNAME }} -e MONGODB_PASSWORD=${{ secrets.MONGODB_PASSWORD }} flask-app-1:v1.0.0  # -d runs the container in the background
+
+# Trigger of the pipeline
+# on:
+#   # initiate the pipeline when there is a push event in the main branch
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   # Stage 1: Building the docker image
+#   build-docker-image:
+#     name: The job to build the application docker image
+#     # To define the machine that runs a job we use "runs-on"
+#     runs-on: csd-windows-local  # Using the self-hosted runner
+#     # The instructions are defined as steps
+#     steps:
+#       - name: Clone and Checkout to the repository
+#         uses: actions/checkout@v2  # this is a GitHub action (pre-defined job)
+#                                    # that clones the project into the working directory
+
+#       - name: Build Docker Image
+#         run: docker build -t flask-app-1:v1.0.0 -f Dockerfile .
+
+#   test:
+#     name: Unit testing of the application
+#     needs: [build-docker-image]
+#     runs-on: csd-windows-local
+#     steps:
+#       - name: Clone and Checkout to the repository
+#         uses: actions/checkout@v2  # this is a GitHub action (pre-defined job)
+#         # that clones the project into the working directory
+
+#       - name: Set up a virtual environment
+#         run: |
+#           python -m venv venv  # Create a virtual environment in a directory called venv
+#           venv/Scripts/activate  # Activate the virtual environment
+#           pip install flask
+#           pip install pytest
+
+#       - name: Run unit tests inside the virtual environment
+#         run: |
+#           venv/Scripts/activate  # Activate the virtual environment
+#           pytest tests/  # Runs the unit testing files under the directory tests
+
+#   deploy-docker-image:
+#     name: Deploy the flask image
+#     needs: [build-docker-image, test]
+#     runs-on: csd-windows-local  # Using the self-hosted runner
+#     steps:
+#       - name: Deploy the image
+#         run: docker run -d -p 5000:5000 flask-app-1:v1.0.0  # -d tag allows us to run the container in the background
