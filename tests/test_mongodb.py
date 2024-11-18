@@ -7,6 +7,7 @@ from app import flask_app
 
 class TestMongoDB(unittest.TestCase):
     def setUp(self):
+        #Loading environment variables from .env file
         load_dotenv()
 
         self.app = flask_app.test_client()
@@ -16,7 +17,11 @@ class TestMongoDB(unittest.TestCase):
         self.client = MongoClient(f"mongodb+srv://{db_username}:{db_password}@cluster0.znx2q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   
     def test_mongodb_connection(self):
-        """Test MongoDB connection using ping."""
+        # Test MongoDB connection using ping.
+        # -> Expected Output: result of the ping command should be a dictionary with a key 'ok' and a value of 1.0.
+        
+        # -> Actual Result: returns {'ok': 1.0} confirming the MongoDB connection is working properly.
+        
         result = self.client.admin.command('ping')
         self.assertEqual(result['ok'], 1.0)
 
