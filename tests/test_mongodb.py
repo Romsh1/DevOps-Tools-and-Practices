@@ -44,7 +44,7 @@ class TestMongoDB(unittest.TestCase):
         insert_result = self.collection.insert_one(new_data)
 
         #Ensuring the insert was successful by checking the inserted document
-        inserted_data = self.collection.find_one({"name": "Product Name"})
+        inserted_data = self.collection.find_one({"name": "test"})
         
         self.assertIsNotNone(inserted_data, "Inserted data not found in the database.")
         self.assertEqual(inserted_data['name'], "test", "The name of the inserted data does not match the expected value.")
